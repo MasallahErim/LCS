@@ -1,0 +1,12 @@
+# Dockerfile.worker
+
+FROM python:3.13-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY src/ /app/src/
+COPY config.py /app/config.py
+ENV PYTHONPATH=/app
+
+ENTRYPOINT ["python", "-m"]
+CMD ["src.presentation.cli.run_producer"]

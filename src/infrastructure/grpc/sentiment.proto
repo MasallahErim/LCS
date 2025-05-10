@@ -1,0 +1,19 @@
+syntax = "proto3";
+package sentiment;
+
+// gRPC servisi
+service Sentiment {
+  // gRPC metodu: istemciden gelen metin için duygu analizi döndürür
+  rpc Analyze (AnalyzeRequest) returns (AnalyzeResponse);
+}
+
+// İstek mesajı
+message AnalyzeRequest {
+  string text = 1;
+}
+
+// Yanıt mesajı
+message AnalyzeResponse {
+  // "POSITIVE", "NEGATIVE" veya "NEUTRAL"
+  string sentiment = 1;
+}
