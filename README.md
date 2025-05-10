@@ -104,3 +104,36 @@ Tüm servisleri başlatmak için:
 ```bash
 docker-compose up -d --build
 docker-compose up -d
+
+## 🌐 REST API Kullanımı
+
+Flask tabanlı REST API ile işlenmiş yorumları sorgulayabilirsiniz.
+
+### 1. Tüm yorumları çekmek
+
+**GET** `http://localhost:8000/comments?limit=10`
+
+
+
+### 2. Sadece `POSITIVE` yorumları çekmek
+
+**GET** `http://localhost:8000/comments?sentiment=POSITIVE`
+
+- `sentiment` parametresi `POSITIVE`, `NEGATIVE` veya `NEUTRAL` olabilir.
+- Belirtilen duygu etiketine sahip yorumları döner.
+ 
+### Örnek Çıktılar 
+[
+    {
+        "commentId": "044b472c-9ead-4b77-8826-5b93cdf50d57",
+        "sentiment": "NEUTRAL",
+        "text": "Thitable.\"\n\nThe issue first surfaced last month when then-premie \"",
+        "timestamp": "Sat, 10 May 2025 14:02:43 GMT"
+    },
+    {
+        "commentId": "5ad1dee1-ed3a-4b88-8080-05b94f70887d",
+        "sentiment": "POSITIVE",
+        "text": "The federal NDP promised tement saying, \"",
+        "timestamp": "Sat, 10 May 2025 14:02:45 GMT"
+    }
+]
